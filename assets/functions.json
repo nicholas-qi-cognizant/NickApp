@@ -1,0 +1,34 @@
+{
+  "exports": [
+    {
+      "id": "embedded.commerce.carts.addItem.before",
+      "virtualPath": "./dist/commerce.carts.manifest.all.js",
+      "actionId": "embedded.commerce.carts.addItem.before"
+    },
+    {
+      "id": "http.commerce.catalog.storefront.shipping.requestRates.after",
+      "virtualPath": "./dist/commerce.catalog.storefront.shipping.manifest.all.js",
+      "actionId": "http.commerce.catalog.storefront.shipping.requestRates.after"
+    },
+    {
+      "id": "sign_up",
+      "virtualPath": "./dist/storefront.manifest.all.js",
+      "actionId": "http.storefront.routes"
+    },
+    {
+      "id": "case_request",
+      "virtualPath": "./dist/storefront.manifest.all.js",
+      "actionId": "http.storefront.routes"
+    },
+    {
+      "id": "open_item",
+      "virtualPath": "./dist/storefront.manifest.all.js",
+      "actionId": "http.storefront.routes"
+    },
+    {
+      "id": "myaccount_transactionhistory",
+      "virtualPath": "./dist/storefront.manifest.all.js",
+      "actionId": "http.storefront.routes"
+    }
+  ]
+}
