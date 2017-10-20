@@ -22,7 +22,9 @@
  */
 
 module.exports = function(context, callback) {
-  
+    console.info(context.request);
+    console.info(context.request.url);
+    
     var items = {
         "head": {
             "uuid": "4d92ce1f-50a9-42fc-8c9b-e3a32ba8dae7",
@@ -63,7 +65,7 @@ module.exports = function(context, callback) {
         }
     };
 
-    context.response.body = JSON.stringify(items);
+    context.response.body = items;
 
     callback();
   };

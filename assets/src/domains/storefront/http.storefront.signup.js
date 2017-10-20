@@ -22,13 +22,15 @@
  */
 
 module.exports = function(context, callback) {
+    console.info(context.request);
+    console.info(context.request.headers);
     console.info(context.request.body);
     var signup = {
       "status": "S",
       "errorMsg": "",
       "caseID": "01425184"
     };
-    context.response.body = JSON.stringify(signup);
+    context.response.body = signup;
     
     // var AWS = require('aws-sdk');
     // console.info(context.configuration.accessKeyId);

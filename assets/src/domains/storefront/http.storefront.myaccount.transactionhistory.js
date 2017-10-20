@@ -58,7 +58,7 @@ module.exports = function(context, callback) {
         }]
     };
 
-    context.response.body = JSON.stringify(transaction_history);
+    context.response.body = transaction_history;
 
     callback();
 };

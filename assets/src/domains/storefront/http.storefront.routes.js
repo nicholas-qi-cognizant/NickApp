@@ -27,6 +27,6 @@ module.exports = function (context, callback) {
     "errorMsg": "",
     "caseID": "01425188"
   };
-  context.response.body = JSON.stringify(data);
+  context.response.body = data;
   callback();
 };

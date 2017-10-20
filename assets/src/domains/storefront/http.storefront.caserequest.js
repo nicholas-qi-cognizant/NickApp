@@ -1,7 +1,20 @@
-// var rp = require('request-promise');
-// var rp = require('./../../../lib/request-promise');
+// var rp = require('request');
+var needle = require('needle');
 
 module.exports = function (context, callback) {
+
+
+  console.info(context.request);
+  console.info(context.request.headers);
+  console.info(context.request.body);
+
+  var caserequest = {
+    "status": "S",
+    "errorMsg": "",
+    "caseID": "01425186"
+  };
+
+  // context.response.body = caserequest;
 
   var data = {
     "caseDetails": {
@@ -15,64 +28,18 @@ module.exports = function (context, callback) {
         }
       }
   };
+  var accessToken = '00D0l000000CuYe!ARsAQB4T2S_9zX6czS52D2lLJulOUjNPIc9Y7A7k7ofX_1_oOK4ICZzkoJiD19v4fTPz7aNoRh0Oype2N1PA.tfpuQqnfh4t';
 
-  console.info(context.request);
-  console.info(context.request.headers);
-  console.info(context.request.body);
-  
-  var addCase = {
-    method: 'POST',
-    uri: 'https://cs58.salesforce.com/services/apexrest/api/Case',
-    auth: {
-        'bearer': "00D0l000000CuYe!ARsAQNSwDA7Y4l7vIwkzkuW.WHRZoWZDi6tu8ce9pfL6EcYeTtW_LRJmkPEO3KGU0zWQ1RlbXgUU.uuUjE92FVHgM7fmd0h9"
+  var options = {
+    headers: {
+        'Authorization': 'Bearer ' + accessToken
     },
-    body : data,
     json: true
   };
 
-  var caserequest = {
-    "status": "S",
-    "errorMsg": "",
-    "caseID": "01425186"
-  };
-
-  // context.response.body = caserequest;
-
-  // rp(addCase)
-  // .then(function (response) {
-  //   console.info(response);
-  // })
-  // .catch(function (err) {
-  //   console.info(err);
-  // });
-
-  var http = require('http');
-  var options = {
-    hostname: 'https://cs58.salesforce.com',
-    path: '/services/apexrest/api/Case',
-    port: 80,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': data.length
-    },
-    body: data,
-    auth: {
-      'bearer': "00D0l000000CuYe!ARsAQNSwDA7Y4l7vIwkzkuW.WHRZoWZDi6tu8ce9pfL6EcYeTtW_LRJmkPEO3KGU0zWQ1RlbXgUU.uuUjE92FVHgM7fmd0h9"
-    }
-  };
-  var google = {
-    hostname: 'www.google.com',
-    port: 80,
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  };
-  var req = http.request(options, function(res) {
-    context.response.body = res;
-    // callback();
+  needle.post('https://cs58.salesforce.com/services/apexrest/api/Case', data, options, function(err, res) {
+      context.response.body = res.body;
+      callback();
   });
-  req.end();
-  callback();
+
 };
